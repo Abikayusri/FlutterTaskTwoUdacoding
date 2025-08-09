@@ -23,7 +23,7 @@ class RegisterScreen extends StatelessWidget {
           "New Account",
           style: TextStyle(
             color: AppColors.white,
-            fontSize: 20,
+            fontSize: 26,
             fontWeight: FontWeight.w900,
           ),
         ),
@@ -53,13 +53,11 @@ class RegisterScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Full Name Field
                     _buildLabel('Full name'),
                     _buildTextField(hintText: 'Enter your full name'),
 
                     const SizedBox(height: 20),
 
-                    // Password Field
                     _buildLabel('Password'),
                     _buildTextField(
                       hintText: '••••••••••••••',
@@ -76,7 +74,6 @@ class RegisterScreen extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    // Email Field
                     _buildLabel('Email'),
                     _buildTextField(
                       hintText: 'example@example.com',
@@ -85,7 +82,6 @@ class RegisterScreen extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    // Mobile Number Field
                     _buildLabel('Mobile Number'),
                     _buildTextField(
                       hintText: '+ 123 456 789',
@@ -94,7 +90,6 @@ class RegisterScreen extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    // Date of Birth Field
                     _buildLabel('Date of birth'),
                     _buildTextField(
                       hintText: 'DD / MM / YYY',
@@ -104,7 +99,6 @@ class RegisterScreen extends StatelessWidget {
 
                     const SizedBox(height: 24),
 
-                    // Terms & Privacy Text
                     Center(
                       child: RichText(
                         textAlign: TextAlign.center,
@@ -140,7 +134,6 @@ class RegisterScreen extends StatelessWidget {
 
                     const SizedBox(height: 24),
 
-                    // Sign Up Button
                     SizedBox(
                       width: double.infinity,
                       height: 50,
@@ -172,7 +165,6 @@ class RegisterScreen extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    // Or sign up with text
                     const Center(
                       child: Text(
                         'or sign up with',
@@ -182,7 +174,6 @@ class RegisterScreen extends StatelessWidget {
 
                     const SizedBox(height: 16),
 
-                    // Social Login Buttons
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -226,7 +217,6 @@ class RegisterScreen extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    // Already have account
                     Center(
                       child: GestureDetector(
                         onTap: () {
@@ -292,7 +282,6 @@ class RegisterScreen extends StatelessWidget {
       ),
       child: TextFormField(
         obscureText: isPassword,
-        // Always obscured for StatelessWidget
         keyboardType: keyboardType,
         readOnly: readOnly,
         onTap: onTap,
@@ -358,22 +347,9 @@ class RegisterScreen extends StatelessWidget {
         );
       },
     );
-
-    if (picked != null) {
-      // Dengan StatelessWidget, tidak bisa update UI secara langsung
-      // Perlu menggunakan callback atau state management
-      print("Selected date: ${picked.day}/${picked.month}/${picked.year}");
-
-      // Opsi 1: Pass callback dari parent widget
-      // Opsi 2: Gunakan state management (Provider, Riverpod, Bloc)
-      // Opsi 3: Pindah ke StatefulWidget untuk bagian ini
-    }
   }
 }
 
-// ===== ALTERNATIVE: Custom Stateful Widgets untuk Fitur Interaktif =====
-
-// Custom Password Field dengan StatefulWidget
 class PasswordField extends StatefulWidget {
   final String hintText;
   final String? Function(String?)? validator;
@@ -430,7 +406,6 @@ class _PasswordFieldState extends State<PasswordField> {
   }
 }
 
-// Custom Date Field dengan StatefulWidget
 class DateField extends StatefulWidget {
   final String hintText;
   final Function(DateTime)? onDateSelected;

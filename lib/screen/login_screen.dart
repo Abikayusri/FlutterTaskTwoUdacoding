@@ -30,11 +30,11 @@ class LoginScreen extends StatelessWidget {
         centerTitle: true,
       ),
       backgroundColor: AppColors.primaryYellow,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 48),
-            Container(
+      body: Column(
+        children: [
+          SizedBox(height: 48),
+          Expanded(
+            child: Container(
               width: double.infinity,
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
@@ -48,221 +48,181 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Welcome",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.black,
-                      ),
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                      style: TextStyle(fontSize: 12, color: AppColors.black),
-                    ),
-
-                    const SizedBox(height: 32),
-
-                    // Full Name Field
-                    _buildLabel('Email or Mobile Number'),
-                    _buildTextField(hintText: 'example@example.com'),
-
-                    const SizedBox(height: 20),
-
-                    // Password Field
-                    _buildLabel('Password'),
-                    _buildTextField(
-                      hintText: '••••••••••••••',
-                      isPassword: true,
-                      suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: Image.asset(
-                          "image/ic_eye_red.png",
-                          width: 20,
-                          height: 20,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Welcome",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.black,
                         ),
                       ),
-                    ),
 
-                    const SizedBox(height: 20),
+                      const SizedBox(height: 16),
 
-                    Text(
-                      "Forgot Password",
-                      style: TextStyle(
-                        color: AppColors.primaryOrange,
-                        fontWeight: FontWeight.w600,
+                      Text(
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+                        style: TextStyle(fontSize: 12, color: AppColors.black),
                       ),
-                      textAlign: TextAlign.end,
-                    ),
 
-                    const SizedBox(height: 24),
+                      const SizedBox(height: 32),
 
-                    // Terms & Privacy Text
-                    Center(
-                      child: RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                          text: 'By continuing, you agree to\n',
-                          style: const TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: 'Terms of Use',
-                              style: TextStyle(
-                                color: AppColors.primaryOrange,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const TextSpan(text: ' and '),
-                            TextSpan(
-                              text: 'Privacy Policy',
-                              style: TextStyle(
-                                color: AppColors.primaryOrange,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const TextSpan(text: '.'),
-                          ],
-                        ),
-                      ),
-                    ),
+                      _buildLabel('Email or Mobile Number'),
+                      _buildTextField(hintText: 'example@example.com'),
 
-                    const SizedBox(height: 24),
+                      const SizedBox(height: 20),
 
-                    // Sign Up Button
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => RegisterScreen()),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primaryOrange,
-                          foregroundColor: Colors.white,
-                          elevation: 2,
-                          shadowColor: Colors.black26,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25),
+                      _buildLabel('Password'),
+                      _buildTextField(
+                        hintText: '••••••••••••••',
+                        isPassword: true,
+                        suffixIcon: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset(
+                            "image/ic_eye_red.png",
+                            width: 20,
+                            height: 20,
                           ),
                         ),
-                        child: const Text(
-                          'Sign Up',
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          "Forgot Password",
                           style: TextStyle(
-                            fontSize: 18,
+                            color: AppColors.primaryOrange,
                             fontWeight: FontWeight.w600,
+                            fontSize: 14,
                           ),
                         ),
                       ),
-                    ),
 
-                    const SizedBox(height: 20),
+                      const SizedBox(height: 32),
 
-                    // Or sign up with text
-                    const Center(
-                      child: Text(
-                        'or sign up with',
-                        style: TextStyle(color: Colors.grey, fontSize: 14),
-                      ),
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    // Social Login Buttons
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildSocialButton(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => RegisterScreen()),
-                          ),
-                          iconWidget: Image.asset(
-                            "image/ic_google.png",
-                            width: 40,
-                            height: 40,
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        _buildSocialButton(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => RegisterScreen()),
-                          ),
-                          iconWidget: Image.asset(
-                            "image/ic_facebook.png",
-                            width: 40,
-                            height: 40,
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        _buildSocialButton(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => RegisterScreen()),
-                          ),
-                          iconWidget: Image.asset(
-                            "image/ic_fingerprint.png",
-                            width: 40,
-                            height: 40,
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 20),
-
-                    // Already have account
-                    Center(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => RegisterScreen()),
-                          );
-                        },
-                        child: RichText(
-                          text: TextSpan(
-                            text: "Don't have an account? ",
-                            style: const TextStyle(
-                              color: Colors.grey,
-                              fontSize: 14,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: "Sign Up",
-                                style: TextStyle(
-                                  color: AppColors.primaryOrange,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => RegisterScreen(),
                               ),
-                            ],
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.primaryOrange,
+                            foregroundColor: Colors.white,
+                            elevation: 2,
+                            shadowColor: Colors.black26,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                          ),
+                          child: const Text(
+                            'Log In',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+
+                      const SizedBox(height: 24),
+
+                      const Center(
+                        child: Text(
+                          'or sign up with',
+                          style: TextStyle(color: Colors.grey, fontSize: 14),
+                        ),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _buildSocialButton(
+                            onTap: () {},
+                            iconWidget: Image.asset(
+                              "image/ic_google.png",
+                              width: 24,
+                              height: 24,
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          _buildSocialButton(
+                            onTap: () {},
+                            iconWidget: Image.asset(
+                              "image/ic_facebook.png",
+                              width: 24,
+                              height: 24,
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          _buildSocialButton(
+                            onTap: () {},
+                            iconWidget: Image.asset(
+                              "image/ic_fingerprint.png",
+                              width: 24,
+                              height: 24,
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 24),
+
+                      Center(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => RegisterScreen(),
+                              ),
+                            );
+                          },
+                          child: RichText(
+                            text: TextSpan(
+                              text: "Don't have an account? ",
+                              style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 14,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: "Sign Up",
+                                  style: TextStyle(
+                                    color: AppColors.primaryOrange,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 20),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -296,7 +256,6 @@ class LoginScreen extends StatelessWidget {
       ),
       child: TextFormField(
         obscureText: isPassword,
-        // Always obscured for StatelessWidget
         keyboardType: keyboardType,
         readOnly: readOnly,
         onTap: onTap,
@@ -335,180 +294,10 @@ class LoginScreen extends StatelessWidget {
         height: 50,
         decoration: BoxDecoration(
           color: AppColors.secondaryOrange,
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(25),
         ),
         child: Center(child: iconWidget),
       ),
     );
-  }
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.light(
-              primary: AppColors.primaryOrange,
-              onPrimary: Colors.white,
-              surface: Colors.white,
-              onSurface: Colors.black,
-            ),
-          ),
-          child: child!,
-        );
-      },
-    );
-
-    if (picked != null) {
-      // Dengan StatelessWidget, tidak bisa update UI secara langsung
-      // Perlu menggunakan callback atau state management
-      print("Selected date: ${picked.day}/${picked.month}/${picked.year}");
-
-      // Opsi 1: Pass callback dari parent widget
-      // Opsi 2: Gunakan state management (Provider, Riverpod, Bloc)
-      // Opsi 3: Pindah ke StatefulWidget untuk bagian ini
-    }
-  }
-}
-
-// ===== ALTERNATIVE: Custom Stateful Widgets untuk Fitur Interaktif =====
-
-// Custom Password Field dengan StatefulWidget
-class PasswordField extends StatefulWidget {
-  final String hintText;
-  final String? Function(String?)? validator;
-
-  const PasswordField({Key? key, required this.hintText, this.validator})
-    : super(key: key);
-
-  @override
-  State<PasswordField> createState() => _PasswordFieldState();
-}
-
-class _PasswordFieldState extends State<PasswordField> {
-  bool _isVisible = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.creamButton,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: TextFormField(
-        obscureText: !_isVisible,
-        validator: widget.validator,
-        style: const TextStyle(fontSize: 16, color: Colors.black87),
-        decoration: InputDecoration(
-          hintText: widget.hintText,
-          hintStyle: TextStyle(color: Colors.grey[600], fontSize: 16),
-          suffixIcon: IconButton(
-            onPressed: () => setState(() => _isVisible = !_isVisible),
-            icon: Icon(
-              _isVisible ? Icons.visibility : Icons.visibility_off,
-              color: AppColors.primaryOrange,
-              size: 20,
-            ),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: AppColors.primaryOrange, width: 2),
-          ),
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 16,
-          ),
-          filled: true,
-          fillColor: AppColors.creamButton,
-        ),
-      ),
-    );
-  }
-}
-
-// Custom Date Field dengan StatefulWidget
-class DateField extends StatefulWidget {
-  final String hintText;
-  final Function(DateTime)? onDateSelected;
-
-  const DateField({Key? key, required this.hintText, this.onDateSelected})
-    : super(key: key);
-
-  @override
-  State<DateField> createState() => _DateFieldState();
-}
-
-class _DateFieldState extends State<DateField> {
-  String _selectedDate = '';
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.creamButton,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: TextFormField(
-        readOnly: true,
-        onTap: () => _selectDate(context),
-        style: const TextStyle(fontSize: 16, color: Colors.black87),
-        decoration: InputDecoration(
-          hintText: _selectedDate.isEmpty ? widget.hintText : _selectedDate,
-          hintStyle: TextStyle(color: Colors.grey[600], fontSize: 16),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: AppColors.primaryOrange, width: 2),
-          ),
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 16,
-          ),
-          filled: true,
-          fillColor: AppColors.creamButton,
-        ),
-      ),
-    );
-  }
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.light(
-              primary: AppColors.primaryOrange,
-              onPrimary: Colors.white,
-              surface: Colors.white,
-              onSurface: Colors.black,
-            ),
-          ),
-          child: child!,
-        );
-      },
-    );
-
-    if (picked != null) {
-      setState(() {
-        _selectedDate =
-            "${picked.day.toString().padLeft(2, '0')} / ${picked.month.toString().padLeft(2, '0')} / ${picked.year}";
-      });
-      widget.onDateSelected?.call(picked);
-    }
   }
 }
